@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Student Record</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    input, button { padding: 5px; margin-top: 5px; }
+    #result { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Find Student Record</h2>
+
+  <label for="studentId">Enter Student ID:</label>
+  <input type="number" id="studentId" placeholder="e.g., 102">
+
+  <button onclick="findStudent()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    // Sample student records
+    const students = [
+      { id: 101, name: 'Amit', grade: 'A' },
+      { id: 102, name: 'Priya', grade: 'B' },
+      { id: 103, name: 'Raj', grade: 'A+' },
+      { id: 104, name: 'Neha', grade: 'C' }
+    ];
+
+    function findStudent() {
+      const id = parseInt(document.getElementById('studentId').value, 10);
+      const student = students.find(s => s.id === id);
+
+      const resultDiv = document.getElementById('result');
+
+      if (student) {
+        resultDiv.textContent = `Found: ${student.name}, Grade: ${student.grade}`;
+      } else {
+        resultDiv.textContent = 'No student found with that ID.';
+      }
+    }
+  </script>
+
+</body>
+</html>
