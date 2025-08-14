@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Student Record</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    input, select, button { padding: 5px; margin-top: 5px; }
+    #result { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Find Student Record</h2>
+
+  <label for="searchType">Search By:</label>
+  <select id="searchType">
+    <option value="id">ID</option>
+    <option value="name">Name</option>
+  </select>
+
+  <label for="searchValue">Enter Value:</label>
+  <input type="text" id="searchValue" placeholder="e.g., 102 or Priya">
+
+  <button onclick="findStudent()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    // Sample student records
+    var students = [
+      { id: 101, name: 'Amit', grade: 'A' },
+      { id: 102, name: 'Priya', grade: 'B' },
+      { id: 103, name: 'Raj', grade: 'A+' },
+      { id: 104, name: 'Neha', grade: 'C' }
+    ];
+
+    function findStudent() {
+      var searchType = document.getElementById('searchType').value;
+      var searchValue = document.getElementById('searchValue').value.trim();
+      var resultDiv = document.getElementById('result');
+      var foundStudent = null;
+
+      for (var i = 0; i < students.length; i++) {
+        if (searchType === 'id') {
+          if (students[i].id === parseInt(searchValue, 10)) {
+            foundStudent = students[i];
+            break;
+          }
+        } else if (searchType === 'name') {
+          if (students[i].name.toLowerCase() === searchValue.toLowerCase()) {
+            foundStudent = students[i];
+            break;
+          }
+        }
+      }
+
+      if (foundStudent) {
+        resultDiv.textContent = 'Found: ' + foundStudent.name + ', Grade: ' + foundStudent.grade;
+      } else {
+        resultDiv.textContent = 'No student found with that ' + searchType + '.';
+      }
+    }
+  </script>
+
+</body>
+</html>
