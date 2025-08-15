@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-price',
+  templateUrl: './price.component.html'
+})
+export class PriceComponent {
+  price = 1234.56;
+}
+
+
+===html
+
+<h3>Currency Pipe Demo</h3>
+
+<p>Default currency (USD): {{ price | currency }}</p>
+<p>Indian Rupee: {{ price | currency:'INR' }}</p>
+<p>Euro: {{ price | currency:'EUR' }}</p>
