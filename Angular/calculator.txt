@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-calculator',
+  templateUrl: './my-calculator.component.html',
+  styleUrls: ['./my-calculator.component.css']
+})
+export class MyCalculatorComponent {
+  num1!: number;
+  num2!: number;
+  sum: number | null = null;
+
+  calculateSum() {
+    this.sum = (Number(this.num1) || 0) + (Number(this.num2) || 0);
+  }
+}
+
+
+===html
+
+
+<h3>My Calculator</h3>
+
+<form (ngSubmit)="calculateSum()" #calcForm="ngForm">
+  <!-- First Number -->
+  <div>
+    <label>Number 1:</label>
+    <input type="number" name="num1" [(ngModel)]="num1" required>
+  </div>
+
+  <!-- Second Number -->
+  <div>
+    <label>Number 2:</label>
+    <input type="number" name="num2" [(ngModel)]="num2" required>
+  </div>
+
+  <button type="submit" [disabled]="calcForm.invalid">Calculate</button>
+</form>
+
+<!-- Show result -->
+<p *ngIf="sum !== null">Sum: {{ sum }}</p>
+
+
+
+  
