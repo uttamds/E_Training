@@ -1,0 +1,85 @@
+app.modules.ts
+import forms in app.modules.ts ....use following line of code
+
+import { FormsModule } from '@angular/forms';
+
+
+=======
+userlogin
+=====
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-userlogin',
+  templateUrl: './userlogin.component.html',
+  styleUrls: ['./userlogin.component.css']
+})
+export class UserloginComponent {
+  username = '';
+  password = '';
+
+  @Output() loginEvent = new EventEmitter<{ username: string; password: string }>();
+
+  login() {
+    // Emit the form data to parent
+    this.loginEvent.emit({
+      username: this.username,
+      password: this.password
+    });
+  }
+}
+
+
+====html====
+
+<h3>User Login</h3>
+
+<form (ngSubmit)="login()" #loginForm="ngForm">
+  <!-- Username -->
+  <div>
+    <label>Username:</label>
+    <input type="text" name="username" [(ngModel)]="username" required>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" [(ngModel)]="password" required>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+</form>
+====================
+
+
+
+====registration component=======
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
+})
+export class RegistrationComponent {
+  loginMessage = '';
+
+  handleLogin(data: { username: string; password: string }) {
+    this.loginMessage = `User '${data.username}' logged in with password '${data.password}'`;
+  }
+}
+
+
+
+
+=====html====
+
+<h1>Registration Component</h1>
+
+<!-- Child component -->
+<app-userlogin (loginEvent)="handleLogin($event)"></app-userlogin>
+
+<!-- Output message -->
+<p *ngIf="loginMessage">{{ loginMessage }}</p>
+
