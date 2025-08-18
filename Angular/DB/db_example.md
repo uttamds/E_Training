@@ -49,4 +49,7 @@ export class StudentService {
   }
 }
 
-## ----------------
+## create a new component
+
+ng generate component components/student-list
+
