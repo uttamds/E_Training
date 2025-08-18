@@ -100,27 +100,7 @@ export class StudentListComponent implements OnInit {
 
 ## paste in .html file
 
-<div class="container mt-3">
-  <h2>Student Management</h2>
-
-  <!-- Add New Student -->
-  <div class="mb-3">
-    <input [(ngModel)]="newStudent.name" placeholder="Name" class="form-control mb-2">
-    <input [(ngModel)]="newStudent.email" placeholder="Email" class="form-control mb-2">
-    <button (click)="addStudent()" class="btn btn-primary">Add Student</button>
-  </div>
-
-  <!-- Student List -->
-  <ul class="list-group">
-    <li *ngFor="let student of students" class="list-group-item d-flex justify-content-between align-items-center">
-      <span>{{ student.name }} ({{ student.email }})</span>
-      <div>
-        <button (click)="updateStudent(student)" class="btn btn-sm btn-warning me-2">Update</button>
-        <button (click)="deleteStudent(student.id!)" class="btn btn-sm btn-danger">Delete</button>
-      </div>
-    </li>
-  </ul>
-</div>
+see .html file in folder
 
 
 
