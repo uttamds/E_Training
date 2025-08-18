@@ -53,3 +53,51 @@ export class StudentService {
 
 ng generate component components/student-list
 
+## paste the code in TS file 
+
+import { Component, OnInit } from '@angular/core';
+import { StudentService, Student } from '../../services/student.service';
+
+@Component({
+  selector: 'app-student-list',
+  templateUrl: './student-list.component.html'
+})
+export class StudentListComponent implements OnInit {
+  students: Student[] = [];
+  newStudent: Student = { name: '', email: '' };
+
+  constructor(private studentService: StudentService) {}  // ✅ DI
+
+  ngOnInit() {
+    this.loadStudents();
+  }
+
+  loadStudents() {
+    this.studentService.getStudents().subscribe(data => this.students = data);
+  }
+
+  addStudent() {
+    if (this.newStudent.name && this.newStudent.email) {
+      this.studentService.addStudent(this.newStudent).subscribe(() => {
+        this.loadStudents();
+        this.newStudent = { name: '', email: '' };
+      });
+    }
+  }
+
+  updateStudent(student: Student) {
+    this.studentService.updateStudent(student.id!, student).subscribe(() => {
+      this.loadStudents();
+    });
+  }
+
+  deleteStudent(id: number) {
+    this.studentService.deleteStudent(id).subscribe(() => {
+      this.loadStudents();
+    });
+  }
+}
+
+
+
+
