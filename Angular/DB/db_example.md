@@ -102,6 +102,10 @@ export class StudentListComponent implements OnInit {
 
 see .html file in folder
 
+# start json server
+json-server --watch db.json --port 3000
+
+
 
 
 
