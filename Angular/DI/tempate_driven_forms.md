@@ -133,3 +133,25 @@ export class UserFormComponent {
 2. We use `ngModel` for **two-way data binding**.
 3. Template reference variables like `#name="ngModel"` give access to field validation state.
 4. The form is submitted only when valid.
+
+
+==================
+
+
+<input type="email" 
+       id="email" 
+       name="email" 
+       class="form-control"
+       required
+       email                 <!-- ✅ Angular's EmailValidator -->
+       [(ngModel)]="user.email" 
+       #email="ngModel">
+
+<!-- Error Messages -->
+<div *ngIf="email.errors?.['required'] && email.touched" class="text-danger">
+  Email is required
+</div>
+<div *ngIf="email.errors?.['email'] && email.touched" class="text-danger">
+  Please enter a valid email address
+</div>
+
