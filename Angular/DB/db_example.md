@@ -4,10 +4,5 @@ npm install -g json-server
 
 ## Create db.json file with following data
 
-{
-  "students": [
-    { "id": 1, "name": "Ravi", "email": "ravi@example.com" },
-    { "id": 2, "name": "Anita", "email": "anita@example.com" }
-  ]
-}
+<img width="832" height="242" alt="image" src="https://github.com/user-attachments/assets/66d2be74-3761-46d7-89b9-50d69af893a4" />
 
