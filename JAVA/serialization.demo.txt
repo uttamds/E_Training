@@ -43,3 +43,62 @@ public class SerializationDemo {
         }
     }
 }
+
+
+=================================
+
+USING DB : MS SQL SERVER
+
+=================================
+
+import java.sql.*;
+
+class Student {
+    private String name;
+    private int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+}
+
+public class StudentDBDemo {
+    public static void main(String[] args) {
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=TestDB;encrypt=true;trustServerCertificate=true;";
+        String user = "sa";
+        String password = "your_password";
+
+        Student s1 = new Student("Rahul", 21);
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            System.out.println("Connected to SQL Server");
+
+            // Insert object state into DB
+            String insertSQL = "INSERT INTO Students(name, age) VALUES (?, ?)";
+            try (PreparedStatement ps = conn.prepareStatement(insertSQL)) {
+                ps.setString(1, s1.getName());
+                ps.setInt(2, s1.getAge());
+                ps.executeUpdate();
+                System.out.println("Student inserted.");
+            }
+
+            // Retrieve object back from DB
+            String selectSQL = "SELECT name, age FROM Students WHERE name = ?";
+            try (PreparedStatement ps = conn.prepareStatement(selectSQL)) {
+                ps.setString(1, "Rahul");
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    Student s2 = new Student(rs.getString("name"), rs.getInt("age"));
+                    System.out.println("Retrieved from DB: " + s2.getName() + " (" + s2.getAge() + ")");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
