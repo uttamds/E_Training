@@ -32,3 +32,20 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 }
+
+
+/*
+How to test:
+
+http://localhost:8080/hello
+→ Hello, Spring Boot!
+
+http://localhost:8080/greet
+→ Greetings from Spring Boot!
+
+http://localhost:8080/welcome/Rahul
+→ Welcome, Rahul! (PathVariable)
+
+http://localhost:8080/sayHello?name=Priya
+→ Hello, Priya! (RequestParam)
+                 */
