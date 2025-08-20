@@ -209,6 +209,4 @@
 
 ---
 
-If you want, I can prepare a **visually structured PDF** with **diagrams**, **code snippets**, and **flowcharts** for these topics to use as a **training handout** for your students.
 
-Do you want me to make that?
