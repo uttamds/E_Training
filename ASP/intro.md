@@ -263,3 +263,73 @@ Note
 	•	Connect to databases
 	•	Serve web apps & services.
 
+# Is ASP.Net a SPA?
+--------------------
+
+ Not necessarily 🙂 — **ASP.NET** itself is **not** always a **Single Page Application (SPA)** framework.
+It **depends on which ASP.NET technology** you are using. Let me break it down simply:
+
+---
+
+## **1. ASP.NET MVC / ASP.NET Core MVC**
+
+* **Type:** **Not SPA by default**
+* It uses the **traditional server-side rendering** model:
+
+  * Each request loads a **full new HTML page** from the server.
+  * Example: `/Customer` → returns `Index.cshtml`.
+* You **can** make it behave like an SPA by:
+
+  * Using **AJAX** + **partial views**
+  * Or integrating **Angular**, **React**, or **Vue** inside it.
+
+---
+
+## **2. ASP.NET Web Forms** *(old)*
+
+* Also **not SPA** by design.
+* Page reloads occur on every interaction unless you manually use **AJAX**.
+
+---
+
+## **3. ASP.NET Web API**
+
+* **Not SPA itself**, but it's **used as a backend** for SPA frameworks.
+* Example:
+
+  * Angular app → calls ASP.NET Web API → fetches JSON → updates UI.
+
+---
+
+## **4. ASP.NET Blazor**
+
+* **Blazor WebAssembly**: **SPA framework** ✅
+* Runs **C# code in the browser** using WebAssembly.
+* No page reloads; UI updates dynamically.
+
+---
+
+## **5. ASP.NET with Angular / React / Vue**
+
+* If you combine ASP.NET with **Angular, React, or Vue**,
+  **then it becomes an SPA** ✅
+* ASP.NET acts as **API + hosting layer**, while the **SPA handles routing and UI**.
+
+---
+
+## **Summary Table**
+
+| **ASP.NET Technology**      | **SPA by Default?** | **How UI Loads**             |
+| --------------------------- | ------------------- | ---------------------------- |
+| ASP.NET MVC / Core MVC      | ❌ No                | Full page reloads            |
+| ASP.NET Web Forms           | ❌ No                | Full page reloads            |
+| ASP.NET Web API             | ❌ No                | Provides JSON, not UI        |
+| ASP.NET Blazor WebAssembly  | ✅ Yes               | SPA, dynamic updates         |
+| ASP.NET + Angular/React/Vue | ✅ Yes               | SPA with client-side routing |
+
+---
+
+If you want, I can **compare ASP.NET MVC** and **Angular SPA** side by side with a **simple example** to help you visualize the difference.
+Should I?
+
+
