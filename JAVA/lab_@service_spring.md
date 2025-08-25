@@ -1,12 +1,6 @@
-
-
-Online Bookstore API**.
-
-
+# Online Bookstore API**.
 ---
-
 ## **Lab Title**
-
 **Building an Online Bookstore REST API Using `@Service` in Spring Boot**
 
 ---
