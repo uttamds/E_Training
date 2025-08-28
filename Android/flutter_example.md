@@ -1,6 +1,15 @@
 Got it 🙂 You want a **minimal Flutter code demo** using **Android Studio** — something very simple to show students or beginners how Flutter works. I’ll give you a **step-by-step guide** plus a **basic app code** that displays a button and updates text when clicked.
 
 ---
+## install flutter
+
+1. Click File->Settings
+2. Click Plugings on left panel
+3. Search for Flutter
+4. Install 
+5. Restart IDE
+
+
 
 ## **Step 1: Create a New Flutter Project**
 
