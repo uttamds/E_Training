@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sports Hub — Sample Page</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #071129 0%, #071827 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      padding:32px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px
+    }
+    .logo{
+      width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;box-shadow:0 6px 20px rgba(6,182,212,0.08);
+    }
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    .container{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+
+    /* main card */
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:20px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6);
+      display:flex;gap:16px;align-items:center
+    }
+    .hero .info{flex:1}
+    .kicker{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:0.6px}
+    h1{margin:6px 0 8px;font-size:26px}
+    p.lead{color:var(--muted);margin:0}
+    .cta{margin-top:14px}
+    .btn{background:linear-gradient(90deg,var(--accent),#7c3aed);border:none;padding:10px 14px;border-radius:10px;color:#011;cursor:pointer;font-weight:700}
+    .stats{display:flex;gap:12px;margin-top:16px}
+    .stat{background:var(--glass);padding:10px 12px;border-radius:12px;text-align:center;min-width:84px}
+    .stat strong{display:block;font-size:18px}
+    
+    /* teams grid */
+    .teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:18px}
+    .team-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+    .team-info small{display:block;color:var(--muted);font-size:12px}
+
+    /* right column */
+    aside .box{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;margin-bottom:14px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px 6px;text-align:left;font-size:13px}
+    tr:hover td{background:rgba(255,255,255,0.01)}
+    th{color:var(--muted);font-size:12px}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery .photo{height:84px;border-radius:10px;display:flex;align-items:end;padding:8px;font-weight:700}
+
+    /* responsive */
+    @media (max-width:920px){
+      .container{grid-template-columns:1fr}
+      aside{order:2}
+    }
+
+    /* subtle footer */
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">SH</div>
+      <div>
+        <div style="font-weight:800">Sports Hub</div>
+        <div style="font-size:12px;color:var(--muted)">Your quick snapshot of local leagues</div>
+      </div>
+    </div>
+    <nav aria-label="main navigation">
+      <a href="#teams">Teams</a>
+      <a href="#fixtures">Fixtures</a>
+      <a href="#stats">Stats</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <main>
+      <section class="hero">
+        <div class="info">
+          <div class="kicker">LIVE · Local League</div>
+          <h1>Weekend Showdown — Chennai Strikers vs Mumbai Titans</h1>
+          <p class="lead">Catch the top players from both sides. Friendly stadium weather expected — perfect for an evening match under lights.</p>
+          <div class="cta">
+            <button class="btn" onclick="alert('Booked 2 tickets — enjoy the match!')">Book Tickets</button>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><small>Attendance</small><strong>12.4k</strong></div>
+            <div class="stat"><small>Temperature</small><strong>26°C</strong></div>
+            <div class="stat"><small>Starts</small><strong>6:30 PM</strong></div>
+          </div>
+        </div>
+        <div style="width:180px;text-align:center">
+          <div style="font-size:12px;color:var(--muted)">Matchday</div>
+          <div style="margin-top:12px;background:linear-gradient(135deg,#0ea5a3,#7c3aed);border-radius:12px;padding:18px;font-weight:900">STRK vs TIT</div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">Stadium: Marina Field</div>
+        </div>
+      </section>
+
+      <section id="teams" style="margin-top:18px">
+        <h2 style="margin:0 0 12px">Featured Teams</h2>
+        <div class="teams">
+          <article class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#ffb86b,#ff7aa2);color:#061520">CS</div>
+            <div class="team-info">
+              <div style="font-weight:800">Chennai Strikers</div>
+              <small>Captain: Arjun Rao • Home: Chennai</small>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#7ee7c5,#06b6d4);color:#012029">MT</div>
+            <div class="team-info">
+              <div style="font-weight:800">Mumbai Titans</div>
+              <small>Captain: Kabir Singh • Home: Mumbai</small>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4);color:#061520">BL</div>
+            <div class="team-info">
+              <div style="font-weight:800">Bengaluru Lions</div>
+              <small>Captain: Meera Nair • Home: Bengaluru</small>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#f97316,#ef4444);color:#061520">PD</div>
+            <div class="team-info">
+              <div style="font-weight:800">Pune Dribblers</div>
+              <small>Captain: Rajiv Patel • Home: Pune</small>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="stats" style="margin-top:22px">
+        <h2 style="margin:0 0 12px">Top Players — Season Snapshot</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+          <div style="background:var(--card);padding:12px;border-radius:12px">
+            <div style="font-weight:800">Arjun Rao</div>
+            <small style="color:var(--muted)">Chennai Strikers • Forward</small>
+            <div style="margin-top:8px"><strong>Goals:</strong> 14 • <strong>Assists:</strong> 6</div>
+          </div>
+
+          <div style="background:var(--card);padding:12px;border-radius:12px">
+            <div style="font-weight:800">Kabir Singh</div>
+            <small style="color:var(--muted)">Mumbai Titans • Midfielder</small>
+            <div style="margin-top:8px"><strong>Goals:</strong> 9 • <strong>Assists:</strong> 11</div>
+          </div>
+
+          <div style="background:var(--card);padding:12px;border-radius:12px">
+            <div style="font-weight:800">Meera Nair</div>
+            <small style="color:var(--muted)">Bengaluru Lions • Defender</small>
+            <div style="margin-top:8px"><strong>Tackles:</strong> 48 • <strong>Clearances:</strong> 30</div>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-top:22px">
+        <h2 style="margin:0 0 12px">Gallery</h2>
+        <div class="gallery">
+          <div class="photo" style="background:linear-gradient(135deg,#ff7aa2,#ffb86b);border-radius:10px">AR</div>
+          <div class="photo" style="background:linear-gradient(135deg,#06b6d4,#7ee7c5);border-radius:10px">KS</div>
+          <div class="photo" style="background:linear-gradient(135deg,#7c3aed,#8b5cf6);border-radius:10px">MN</div>
+          <div class="photo" style="background:linear-gradient(135deg,#f97316,#ff7aa2);border-radius:10px">PD</div>
+          <div class="photo" style="background:linear-gradient(135deg,#06b6d4,#7c3aed);border-radius:10px">ST</div>
+          <div class="photo" style="background:linear-gradient(135deg,#34d399,#06b6d4);border-radius:10px">GK</div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside>
+      <div class="box">
+        <h3 style="margin:0 0 8px">Upcoming Fixtures</h3>
+        <table aria-labelledby="fixtures">
+          <thead>
+            <tr><th>When</th><th>Match</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Oct 18, 2025</td><td>Chennai Strikers vs Mumbai Titans</td></tr>
+            <tr><td>Oct 20, 2025</td><td>Bengaluru Lions vs Pune Dribblers</td></tr>
+            <tr><td>Oct 24, 2025</td><td>Mumbai Titans vs Pune Dribblers</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3 style="margin:0 0 8px">Latest Scores</h3>
+        <div style="font-weight:800">Chennai Strikers 2 — 1 Bengaluru Lions</div>
+        <div style="color:var(--muted);font-size:13px;margin-top:6px">Oct 05, 2025 • Marina Field</div>
+      </div>
+
+      <div class="box">
+        <h3 style="margin:0 0 8px">Quick Picks</h3>
+        <ul style="padding-left:16px;color:var(--muted);margin:0">
+          <li>Buy snacks from gate C — shorter lines</li>
+          <li>Wear light layers — evening breeze</li>
+          <li>Public transport recommended</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    © Sports Hub — Demo. This sample HTML is responsive and intentionally self-contained.
+  </footer>
+
+  <script>
+    // small accessibility enhancement: focus main when skip link used
+    document.addEventListener('keydown', e => {
+      if(e.key === 'k' && (e.ctrlKey || e.metaKey)){
+        const first = document.querySelector('main');
+        if(first) first.scrollIntoView({behavior:'smooth'});
+      }
+    });
+  </script>
+</body>
+</html>
